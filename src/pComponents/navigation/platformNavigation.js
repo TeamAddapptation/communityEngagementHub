@@ -24,7 +24,8 @@ export default function platformNavigation() {
       </a>
     </div>
     <div class="a__menu-items">
-      <h4 class="a__page-name">Dashboard</h4>
+        <a class="a__link"><i class="far fa-calendar-star"></i></a>
+        <a class="a__link"><i class="fas fa-bell"></i></i></a>
       <div class="a__item a__dropdown">
         <a class="a__link a__profile-logo">E</a>
         <div class="a__dropdown-container">

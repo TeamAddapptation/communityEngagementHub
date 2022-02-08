@@ -88,7 +88,12 @@ Menu Links
   font-style: normal;
   display: block;
   color: #5d5d5d;
-  padding: 25px 15px;
+  padding-top: 10px;
+  padding-right: 25px;
+}
+.a__menu-items a i {
+  color: #a1a1a1;
+  font-size: 1.8rem;
 }
 .a__item {
   display: flex;
