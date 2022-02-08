@@ -24,7 +24,31 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <h1>Dashboard</h1>
+    <div id="hub-navigation"></div>
+    <div class="p__grid-dashboard">
+      <main class="p__dashboard-main">
+        <div class="p__dashboard-header">
+          <div class="p__flex-column">
+            <h2 class="g__page-header">Hero Header</h2>
+            <h2 class="g__page-sub">Simple description lorem ipsum dolor</h2>
+          </div>
+          <div class="p__flex-row">
+            <a href="#" class="p__purple-outline-btn p__mr-10"
+              >Browse Activities</a
+            >
+            <a href="#" class="p__purple-outline-btn">Browse Groups</a>
+          </div>
+        </div>
+        <div class="p__dashboard-filters">
+          <h2 class="g__page-header">Categories</h2>
+          <div id="ceg-pill-filters" class="p__mt-15"></div>
+        </div>
+        <div class="p__dashboard-cards">
+          <h2 class="g__page-sub">Shown: Youth Programs, Art</h2>
+          <div id="ceg-dashboard-cards" class="p__mt-15"></div>
+        </div>
+      </main>
+    </div>
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="

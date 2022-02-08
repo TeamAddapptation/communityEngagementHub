@@ -1,4 +1,4 @@
-export default function picklist(jsonBlock) {
+export default function cehPicklist(jsonBlock) {
   /*---------------------------------------------
     Global Variables
     ---------------------------------------------*/

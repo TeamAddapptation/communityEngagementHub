@@ -6,6 +6,7 @@ module.exports = {
     main: path.resolve(__dirname, "./src/app.js"),
     index: path.resolve(__dirname, "./src/pages/dashboard/index.js"),
     activities: path.resolve(__dirname, "./src/pages/activities/activities.js"),
+    calendar: path.resolve(__dirname, "./src/pages/calendar/calendar.js"),
   },
   output: {
     filename: "[name].bundle.js",
@@ -30,6 +31,12 @@ module.exports = {
       inject: "body",
       template: "./src/pages/activities/activities.html",
       chunks: ["main", "activities"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "calendar.html",
+      inject: "body",
+      template: "./src/pages/calendar/calendar.html",
+      chunks: ["main", "calendar"],
     }),
   ],
   module: {

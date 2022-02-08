@@ -1,6 +1,6 @@
-import filter from "../../pComponents/filter/filter";
-import cards from "../../pComponents/cards/cards";
-import picklist from "../../pComponents/picklist/picklist";
+import cehFilters from "../../pComponents/filter/cehFilters";
+import cehCards from "../../pComponents/cards/cehCards";
+import cehPicklist from "../../pComponents/picklist/cehPicklist";
 
 const activitiesFilters = {
   id: "ceg_activity-filters",
@@ -66,7 +66,7 @@ const activitiesFilters = {
     },
   ],
 };
-filter(activitiesFilters);
+cehFilters(activitiesFilters);
 
 const activityCards = {
   id: "ceg-activity-cards",
@@ -96,9 +96,9 @@ const activityCards = {
     },
   ],
 };
-cards(activityCards);
+cehCards(activityCards);
 
-const activityFilter = {
+const activityPicklist = {
   id: "ceg-activities-filter",
   options: {
     select_id: "activities-picklist",
@@ -112,4 +112,4 @@ const activityFilter = {
   },
   records: [],
 };
-picklist(activityFilter);
+cehPicklist(activityPicklist);

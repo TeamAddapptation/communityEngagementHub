@@ -1,4 +1,4 @@
-export default function cards(jsonBlock) {
+export default function cehCards(jsonBlock) {
   const id = jsonBlock.id;
   const graniteDiv = document.getElementById(id);
   const o = jsonBlock.options;
@@ -10,12 +10,17 @@ export default function cards(jsonBlock) {
   var mpCardCSS = document.createElement("style");
   mpCardCSS.id = "g__css_" + id;
   mpCardCSS.innerHTML = `
-  ${cssId} .g__container{
+  ${cssId} .g__container.g__container-row{
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 1rem;
   }
-  ${cssId} .g__card{
+  ${cssId} .g__container.g__container-column{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+    grid-gap: 1rem;
+  }
+  ${cssId} .g__container-row .g__card{
     position: relative;
     display: flex;
     background: #FFFFFF;
@@ -23,12 +28,34 @@ export default function cards(jsonBlock) {
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.05);
     border-radius: 5px;
   }
-  ${cssId} .g__card-star{
+  ${cssId} .g__container-column .g__card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 1px solid #EAEAEA;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+  }
+  ${cssId} .g__container-row .g__card-star{
     position: absolute;
     top: 15px;
     right: 15px;
     color: #EAEAEA;
     font-size: 1.2rem;
+    transition: all 0.5s ease;
+  }
+  ${cssId} .g__container-column .g__card-star{
+    position: absolute;
+    z-index: 5;
+    top: 10px;
+    right: 10px;
+    color: #EAEAEA;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #eaeaea;
+    font-size: 1.2rem;
+    border-radius: 50%;
     transition: all 0.5s ease;
   }
   ${cssId} .g__card-star:hover{
@@ -38,7 +65,7 @@ export default function cards(jsonBlock) {
   ${cssId} .g__card-star.active{
     color: #F4D66C;
   }
-  ${cssId} .g__image-container{
+  ${cssId} .g__container-row .g__image-container{
     position: relative;
     display: flex;
     justify-content: center;
@@ -48,8 +75,14 @@ export default function cards(jsonBlock) {
     width: 250px;
     padding: 15px;
   }
-  ${cssId} .g__image-container:hover img{
-    transform: scale(1.07);
+  ${cssId} .g__container-column .g__image-container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    width: auto;
+    padding: 15px;
   }
   ${cssId} .g__image-container img{
     max-height: 150px;
@@ -74,10 +107,16 @@ export default function cards(jsonBlock) {
     background: var(--measurement);
     color: var(--measurement-dark);
   }
-  ${cssId} .g__card-body{
+  ${cssId} .g__container-row .g__card-body{
     padding: 25px;
   }
-  ${cssId} .g__card-title{
+  ${cssId} .g__container-column .g__card-body{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 15px;
+  }
+  ${cssId} .g__container-row .g__card-title{
     font-family: Montserrat;
     font-style: normal;
     font-weight: 600;
@@ -85,7 +124,7 @@ export default function cards(jsonBlock) {
     line-height: 24px;
     color: #101010;
   }
-  ${cssId} .g__card-sub-head{
+  ${cssId} .g__container-row .g__card-sub-head{
     font-family: Montserrat;
     font-style: normal;
     font-weight: 600;
@@ -94,7 +133,7 @@ export default function cards(jsonBlock) {
     margin: 5px 0;
     color: #5D50E6;
   }
-  ${cssId} .g__card-description{
+  ${cssId} .g__container-row .g__card-description{
     font-size: 14px;
     line-height: 20px;
     color: var(--body-font);
@@ -103,10 +142,43 @@ export default function cards(jsonBlock) {
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  ${cssId} .g__card-attendees{
+  ${cssId} .g__container-row .g__card-attendees{
     font-size: .9rem;
     color: #757575;
     margin-top: 15px;
+  }
+  ${cssId} .g__container-column .g__card-title{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #101010;
+  }
+  ${cssId} .g__container-column .g__card-sub-head{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    margin: 0;
+    color: #5D50E6;
+  }
+  ${cssId} .g__container-column .g__card-description{
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--body-font);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  ${cssId} .g__container-column .g__card-attendees{
+    font-size: .9rem;
+    color: #757575;
+    padding-top: 25px;
+    margin-top: auto;
   }
   `;
   let granite_css = document.getElementById("g__css_" + id);
@@ -117,6 +189,9 @@ export default function cards(jsonBlock) {
   /* ---- Main container ---- */
   const mp_container = document.createElement("div");
   mp_container.classList.add("g__container");
+  o.vertical_cards
+    ? mp_container.classList.add("g__container-column")
+    : mp_container.classList.add("g__container-row");
 
   /* ---- Loop through records ---- */
   r.forEach((r, index) => {
