@@ -1,5 +1,6 @@
-import component from "./component";
+import "./styles/cehStyles.css";
 
-import "./styles/style.css";
+import platformNavigation from "./pComponents/navigation/platformNavigation";
+import "./pComponents/navigation/platformNavigation.css";
 
-document.body.appendChild(component());
+platformNavigation();

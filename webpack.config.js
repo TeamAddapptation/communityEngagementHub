@@ -4,6 +4,8 @@ const path = require("path");
 module.exports = {
   entry: {
     main: path.resolve(__dirname, "./src/app.js"),
+    index: path.resolve(__dirname, "./src/pages/dashboard/index.js"),
+    activities: path.resolve(__dirname, "./src/pages/activities/activities.js"),
   },
   output: {
     filename: "[name].bundle.js",
@@ -17,7 +19,17 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Balch Lake",
+      filename: "index.html",
+      inject: "body",
+      template: "./src/pages/dashboard/index.html",
+      chunks: ["main", "index"],
+      title: "Addapptation || Community Engagement Hub",
+    }),
+    new HtmlWebpackPlugin({
+      filename: "activities.html",
+      inject: "body",
+      template: "./src/pages/activities/activities.html",
+      chunks: ["main", "activities"],
     }),
   ],
   module: {
