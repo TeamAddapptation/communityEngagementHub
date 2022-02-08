@@ -192,6 +192,9 @@ Spacing
 .p__mt-10 {
   margin-top: 10px;
 }
+.p__mt-15 {
+  margin-top: 15px;
+}
 .p__mt-25 {
   margin-top: 25px;
 }
@@ -260,7 +263,41 @@ Layout
   grid-auto-columns: auto;
 }
 /*----------
-Grid
+Dashboard Layout
+---------- */
+.p__grid-dashboard {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 1140px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.05);
+}
+.p__dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 25px;
+  box-sizing: border-box;
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.75),
+      rgba(255, 255, 255, 0.75)
+    ),
+    linear-gradient(93.12deg, #5d50e6 15.74%, #aa4cfc 85.33%), #f5f5f5;
+}
+.p__dashboard-filters {
+  background: #ffffff;
+  padding: 25px;
+}
+.p__dashboard-cards {
+  background: #f5f5f5;
+  padding: 25px;
+}
+/*----------
+Activities Groups Layout
 ---------- */
 .p__grid-container {
   display: grid;
@@ -307,6 +344,14 @@ Grid
 }
 .p__flex-col {
   display: flex;
+}
+.p__flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.p__flex-row {
+  display: flex;
+  flex-direction: row;
 }
 /*----------
 Sidepane
@@ -482,6 +527,34 @@ Buttons
   cursor: not-allowed;
   background: var(--disabled);
 }
+/*----- Purple Outline ------ */
+.p__purple-outline-btn {
+  background: white;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #5d50e6;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid #5d50e6;
+  border-radius: 2rem;
+  transition: all 0.5s ease;
+}
+.p__purple-outline-btn:hover {
+  cursor: pointer;
+  color: #fff;
+  background: var(--primary-light);
+}
+.p__purple-outline-btn:active {
+  color: #fff;
+  background: var(--primary-dark);
+}
+.p__purple-outline-btn[disabled="true"] {
+  cursor: not-allowed;
+  background: var(--disabled);
+}
 /*----- Text link ------ */
 .p__text-link {
   background: white;
@@ -502,6 +575,44 @@ Buttons
 .p__text-link[disabled] {
   cursor: not-allowed;
   color: var(--gray-200);
+}
+/*----- toggle ------ */
+.p__toggle-btn {
+  background: #e9e6ff;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  color: #5d50e6;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.5rem 1.5rem;
+  font-weight: 400;
+  border: 0;
+  border-radius: 2rem;
+  transition: all 0.5s ease;
+}
+.p__toggle-btn.active {
+  color: #e9e6ff;
+  background: #5d50e6;
+}
+.p__slim-btn {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-size: 0.9rem;
+  padding: 0.2rem 1.5rem;
+}
+.p__toggle-btn:hover {
+  cursor: pointer;
+  color: #fff;
+  background: var(--primary);
+}
+.p__toggle-btn:active {
+  color: #fff;
+  background: var(--primary-dark);
+}
+.p__toggle-btn[disabled="true"] {
+  cursor: not-allowed;
+  background: var(--disabled);
 }
 /*----- Connect ------ */
 .a__connect-btn {
@@ -555,6 +666,13 @@ Buttons
 /*----------
 Button Utility
 ---------- */
+.p__slim-btn {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-size: 0.9rem;
+  padding: 0.3rem 1.5rem;
+}
 .p__btn-divider {
   margin-left: 15px;
   margin-right: 15px;
@@ -819,6 +937,9 @@ Auth Access
   left: 70px;
 }
 @media only screen and (max-width: 768px) {
+  .p__dashboard-header {
+    flex-direction: column;
+  }
   .p__header {
     grid-template-columns: 1fr;
   }

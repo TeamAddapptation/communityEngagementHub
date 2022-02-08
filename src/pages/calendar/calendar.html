@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="https://use.typekit.net/omg7yww.css" />
     <link
       rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.2/main.min.css"
+    />
+    <link
+      rel="stylesheet"
       href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"
     />
     <link
@@ -20,33 +24,26 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css"
     />
+
     <title>Addapptation</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="hub-navigation"></div>
-    <div class="p__grid-container">
-      <aside class="p__side-filters">
-        <h2 class="g__page-sub p__filters-header">Filters</h2>
-        <div id="ceg_activity-filters"></div>
-      </aside>
-      <main class="p__main">
-        <div class="p__main-header">
-          <div class="p__flex-col">
-            <h2 class="g__page-header">Activities</h2>
-          </div>
-          <div class="p__flex-col">
-            <a href="#" class="p__toggle-btn p__slim-btn active">Activities</a>
-            <div class="p__btn-divider"></div>
-            <a href="#" class="p__toggle-btn p__slim-btn">Groups</a>
-            <div id="ceg-activities-filter"></div>
+    <div class="p__grid-dashboard">
+      <main class="p__dashboard-main">
+        <div class="p__dashboard-header">
+          <div class="p__flex-column">
+            <h2 class="g__page-header">Hero Header</h2>
+            <h2 class="g__page-sub">Simple description lorem ipsum dolor</h2>
           </div>
         </div>
-        <div class="p__main-cards">
-          <div id="ceg-activity-cards"></div>
+        <div class="p__dashboard-cards">
+          <div id="calendar"></div>
         </div>
       </main>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.2/main.min.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
