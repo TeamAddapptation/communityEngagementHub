@@ -9,10 +9,6 @@
     <link rel="stylesheet" href="https://use.typekit.net/omg7yww.css" />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.2/main.min.css"
-    />
-    <link
-      rel="stylesheet"
       href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"
     />
     <link
@@ -24,26 +20,45 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css"
     />
-
     <title>Addapptation</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="hub-navigation"></div>
-    <div class="p__grid-dashboard">
-      <main class="p__dashboard-main">
-        <div class="p__dashboard-header">
-          <div class="p__flex-column">
-            <h2 class="g__page-header">Hero Header</h2>
-            <h2 class="g__page-sub">Simple description lorem ipsum dolor</h2>
+    <div class="p__grid-details">
+      <main class="p__details-main">
+        <div class="p__details-header">
+          <div class="p__flex-column p__mr-25">
+            <h2 class="g__page-header">#{Group Name}</h2>
+            <div class="p__flex-row p__mt-15 p__align-center">
+              <h4 class="g__details p__mr-10">#{Details}</h4>
+            </div>
+
+            <p class="g__page-body p__mt-15">
+              #{Description} Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+              aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <div class="p__flex-row p__mt-25">
+              <button type="button" class="p__primary-btn p__mr-10">
+                Join Group
+              </button>
+            </div>
+          </div>
+          <div class="p__flex-row">
+            <img
+              class="g__details-img"
+              src="https://cdn.addapptation.com/addapptation-asset-library/kids_orchestra.png"
+            />
           </div>
         </div>
-        <div class="p__calendar">
-          <div id="main-calendar"></div>
+        <div class="p__content-full p__top-border p__mt-25">
+          <h2 class="g__page-header-small p__mt-25">Group Members</h2>
+          <div id="group-members-no-auth">
         </div>
       </main>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.2/main.min.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="

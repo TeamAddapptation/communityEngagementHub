@@ -9,10 +9,6 @@
     <link rel="stylesheet" href="https://use.typekit.net/omg7yww.css" />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.2/main.min.css"
-    />
-    <link
-      rel="stylesheet"
       href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"
     />
     <link
@@ -24,7 +20,6 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css"
     />
-
     <title>Addapptation</title>
   </head>
   <body>
@@ -34,16 +29,32 @@
       <main class="p__dashboard-main">
         <div class="p__dashboard-header">
           <div class="p__flex-column">
-            <h2 class="g__page-header">Hero Header</h2>
-            <h2 class="g__page-sub">Simple description lorem ipsum dolor</h2>
+            <h2 class="g__page-header">Welcome, #{User}</h2>
+            <h2 class="g__page-sub">To your Community Hub Dashboard</h2>
+          </div>
+          <div class="p__flex-row">
+            <a href="#" class="p__purple-outline-btn p__mr-10"
+              >Browse Activities</a
+            >
+            <a href="#" class="p__purple-outline-btn">Browse Groups</a>
           </div>
         </div>
-        <div class="p__calendar">
-          <div id="main-calendar"></div>
+        <div class="p__dashboard-cards">
+          <h2 class="g__page-sub">Recommended for You</h2>
+          <!-- Cards -->
+          <div id="ceg-dashboard-cards" class="p__mt-15"></div>
+        </div>
+        <div class="p__dashboard-filters">
+          <h2 class="g__page-header">My Activities</h2>
+          <div id="ceg-pill-filters" class="p__mt-15"></div>
+          <!-- Cards -->
+          <div id="ceg-my-activities-cards" class="p__mt-15"></div>
+          <h2 class="g__page-header p__mt-25">My Groups</h2>
+          <!-- Table -->
+          <div id="ceg-my-groups" class="p__mt-15"></div>
         </div>
       </main>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.2/main.min.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="

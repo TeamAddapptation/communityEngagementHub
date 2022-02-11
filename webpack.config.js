@@ -5,8 +5,21 @@ module.exports = {
   entry: {
     main: path.resolve(__dirname, "./src/app.js"),
     index: path.resolve(__dirname, "./src/pages/dashboard/index.js"),
+    dashboardNoAuth: path.resolve(
+      __dirname,
+      "./src/pages/dashboardNoAuth/dashboardNoAuth.js"
+    ),
     activities: path.resolve(__dirname, "./src/pages/activities/activities.js"),
+    activityDetails: path.resolve(
+      __dirname,
+      "./src/pages/activityDetails/activityDetails.js"
+    ),
+    groupDetails: path.resolve(
+      __dirname,
+      "./src/pages/groupDetails/groupDetails.js"
+    ),
     calendar: path.resolve(__dirname, "./src/pages/calendar/calendar.js"),
+    profile: path.resolve(__dirname, "./src/pages/profile/profile.js"),
   },
   output: {
     filename: "[name].bundle.js",
@@ -27,16 +40,40 @@ module.exports = {
       title: "Addapptation || Community Engagement Hub",
     }),
     new HtmlWebpackPlugin({
+      filename: "dashboardNoAuth.html",
+      inject: "body",
+      template: "./src/pages/dashboardNoAuth/dashboardNoAuth.html",
+      chunks: ["main", "dashboardNoAuth"],
+    }),
+    new HtmlWebpackPlugin({
       filename: "activities.html",
       inject: "body",
       template: "./src/pages/activities/activities.html",
       chunks: ["main", "activities"],
     }),
     new HtmlWebpackPlugin({
+      filename: "activityDetails.html",
+      inject: "body",
+      template: "./src/pages/activityDetails/activityDetails.html",
+      chunks: ["main", "activityDetails"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "groupDetails.html",
+      inject: "body",
+      template: "./src/pages/groupDetails/groupDetails.html",
+      chunks: ["main", "groupDetails"],
+    }),
+    new HtmlWebpackPlugin({
       filename: "calendar.html",
       inject: "body",
       template: "./src/pages/calendar/calendar.html",
       chunks: ["main", "calendar"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "profile.html",
+      inject: "body",
+      template: "./src/pages/profile/profile.html",
+      chunks: ["main", "profile"],
     }),
   ],
   module: {
