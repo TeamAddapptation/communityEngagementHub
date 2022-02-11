@@ -1,4 +1,4 @@
-export default function graniteTable(jsonBlock) {
+function graniteTable(jsonBlock) {
   /*---------------------------------------------
     Global Variables
     ---------------------------------------------*/
@@ -26,6 +26,7 @@ export default function graniteTable(jsonBlock) {
     font-style: normal;
     font-weight: 500;
     font-size: ${fontSize};
+    table-layout: ${o.fixed ? "fixed" : auto};
     color: var(--body-font);
     border-collapse: collapse;
     width: 100%;
@@ -58,6 +59,11 @@ export default function graniteTable(jsonBlock) {
   }
   ${cssId} table tbody tr td a:hover{
     color: var(--gray-400);
+  }
+  ${cssId} .g__table-thumb{
+    max-width: 80px;
+    height: auto;
+    border-radius: 5px;
   }
   /* ----------
   Tooltip
@@ -361,6 +367,7 @@ export default function graniteTable(jsonBlock) {
         }
         row.children.forEach((cell, index) => {
           let newCell = document.createElement("td");
+          cell.width ? (newCell.style.width = cell.width) : "auto";
           newCell.innerHTML = cell.value;
           if (cell.color_label) {
             newCell.style.borderLeft = `4px solid ${cell.color_label}`;

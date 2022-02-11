@@ -126,6 +126,14 @@ export default function cehPillFilters(jsonBlock) {
       filterLabel.innerHTML = option.value;
       filterOption.appendChild(filterLabel);
 
+      filterLabel.addEventListener("click", () => {
+        console.log(option.value.replace(/\s+/g, "-").toLowerCase());
+        let urlParams = `?${r.sf_field}=${r.sf_field}_${option.value
+          .replace(/\s+/g, "-")
+          .toLowerCase()}`;
+        window.location.href = urlParams;
+      });
+
       filterContainer.appendChild(filterOption);
     });
     filterGroup.appendChild(filterContainer);
@@ -134,4 +142,5 @@ export default function cehPillFilters(jsonBlock) {
 
   /* ---- Append container to page ---- */
   graniteDiv.appendChild(filters);
+  const urlParams = new URLSearchParams(window.location.search);
 }

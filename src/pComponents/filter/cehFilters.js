@@ -1,4 +1,4 @@
-export default function cehFilters(jsonBlock) {
+function cehFilters(jsonBlock) {
   const id = jsonBlock.id;
   const graniteDiv = document.getElementById(id);
   const o = jsonBlock.options;
@@ -190,18 +190,18 @@ export default function cehFilters(jsonBlock) {
       filterLabel.classList.add("g__filter-label");
       filterLabel.setAttribute(
         "for",
-        option.value.replace(/\s+/g, "-").toLowerCase()
+        `${r.sf_field}_${option.value.replace(/\s+/g, "-").toLowerCase()}`
       );
-      filterLabel.innerHTML = option.value;
+      filterLabel.innerHTML = option.name;
       filterOption.appendChild(filterLabel);
 
       const filterCheckbox = document.createElement("input");
       filterCheckbox.setAttribute("data-num", index + 1);
-      r.sf_field
-        ? filterCheckbox.setAttribute("data-sf-field", r.sf_field)
-        : "";
-      filterCheckbox.name = option.value.replace(/\s+/g, "-").toLowerCase();
-      filterCheckbox.id = option.value.replace(/\s+/g, "-").toLowerCase();
+      r.sf_field ? filterCheckbox.setAttribute("data-sf", r.sf_field) : "";
+      filterCheckbox.name = option.value;
+      filterCheckbox.id = `${r.sf_field}_${option.value
+        .replace(/\s+/g, "-")
+        .toLowerCase()}`;
       filterCheckbox.type = "checkbox";
       const styledCheckbox = document.createElement("div");
       styledCheckbox.classList.add("g__styled-checkbox");
@@ -239,17 +239,18 @@ export default function cehFilters(jsonBlock) {
   graniteDiv.appendChild(filters);
 
   /* ---- Filter dropdown ---- */
-  const filtersArr = document.querySelectorAll(".a__filter-group");
-  filtersArr.forEach((filter) => {
-    const header = filter.querySelector(".g__header-container");
-    const options = filter.querySelector(".g__options-container");
-    filter.addEventListener("click", () => {
+  const filterGroupArr = document.querySelectorAll(".a__filter-group");
+  const filtersArr = document.querySelectorAll(".g__header-container");
+  filterGroupArr.forEach((group) => {
+    const header = group.querySelector(".g__header-container");
+    const options = group.querySelector(".g__options-container");
+    header.addEventListener("click", () => {
       header.classList.toggle("active");
       options.classList.toggle("active");
       if (header.classList.contains("active")) {
-        localStorage.setItem(filter.dataset.group, true);
+        localStorage.setItem(group.dataset.group, true);
       } else {
-        localStorage.setItem(filter.dataset.group, false);
+        localStorage.setItem(group.dataset.group, false);
       }
     });
   });
@@ -264,8 +265,9 @@ export default function cehFilters(jsonBlock) {
       });
     });
     localStorage.removeItem("selectedItems");
-    location.reload();
+    window.location.href = o.clear_filter_url || "?";
   });
+
   /* ---- Selected Filters ---- */
   let storage = localStorage.getItem("selectedItems");
   if (storage) {
@@ -288,27 +290,40 @@ export default function cehFilters(jsonBlock) {
     const filterGroups = document.querySelectorAll(".a__filter-group");
     let urlParams = "?";
     const currentParams = new URLSearchParams(window.location.search);
-    const workflowParam = currentParams.get("workflows");
-    if (workflowParam === "true") {
-      urlParams = "?workflows=true&";
-    } else {
-      urlParams = "?campaigns=true&";
+    const workflowParam = currentParams.get("view");
+    if (workflowParam == "activity") {
+      urlParams = "?view=activity";
+    } else if (workflowParam == "group") {
+      urlParams = "?view=group";
     }
     let checkedArr = [];
     filterGroups.forEach((group) => {
+      let isQueried = true;
       let inputsArr = group.querySelectorAll('input[type="checkbox"]');
-
       inputsArr.forEach((input, index) => {
         if (input.checked) {
           let hasStorage = localStorage.getItem("selectedItems");
           if (hasStorage) {
             localStorage.removeItem("selectedItems");
           }
+          if (isQueried) {
+            if (urlParams.length === 1) {
+              urlParams += `${input.dataset.sf}=`;
+            } else {
+              urlParams += `&${input.dataset.sf}=`;
+            }
+          }
           checkedArr.push(input.id);
-          const name = input.name.replace(/-/g, " ");
-          urlParams += `${input.dataset.sfField}_${input.dataset.num}=${name}&`;
+          const name = input.name;
+          if (isQueried) {
+            urlParams += `${name}`;
+          } else {
+            urlParams += `,${name}`;
+          }
+          isQueried = false;
         }
       });
+      isQueried = true;
     });
     localStorage.setItem("selectedItems", checkedArr);
     const lastChar = urlParams.charAt(urlParams.length - 1);

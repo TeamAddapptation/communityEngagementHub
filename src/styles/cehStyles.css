@@ -125,11 +125,33 @@ small,
   line-height: 24px;
   color: #222f3c;
 }
+.g__page-header-small {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  color: #222f3c;
+}
 .g__page-sub {
   font-weight: 400;
   font-size: 1.2rem;
   line-height: 27px;
   color: #5d5d5d;
+}
+.g__page-body {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 27px;
+  color: #5d5d5d;
+}
+.g__details {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #5d50e6;
 }
 .g__text-highlight {
   font-size: 0.9rem;
@@ -152,6 +174,9 @@ Text Colors
 ---------- */
 .p__text-primary {
   color: var(--primary);
+}
+.p__text-white {
+  color: #ffffff;
 }
 .p__text-secondary {
   color: var(--secondary);
@@ -204,8 +229,14 @@ Spacing
 .p__mr-10 {
   margin-right: 10px;
 }
+.p__mr-25 {
+  margin-right: 25px;
+}
 .p__ml-15 {
   margin-left: 15px;
+}
+.p__ml-25 {
+  margin-left: 25px;
 }
 .p__mb-10 {
   margin-bottom: 10px;
@@ -237,6 +268,9 @@ Utility
 .p__max-width-600 {
   max-width: 600px;
 }
+.p__top-border {
+  border-top: 1px solid #eaeaea;
+}
 /*----------
 Layout
 ---------- */
@@ -261,6 +295,13 @@ Layout
 .p__col {
   display: grid;
   grid-auto-columns: auto;
+}
+/*----------
+Calendar Layout
+---------- */
+.p__calendar {
+  background: #ffffff;
+  padding: 25px;
 }
 /*----------
 Dashboard Layout
@@ -354,6 +395,86 @@ Activities Groups Layout
   flex-direction: row;
 }
 /*----------
+Profile
+---------- */
+.p__grid-profile {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 1140px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.05);
+}
+.p__profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 25px;
+  box-sizing: border-box;
+  background: linear-gradient(93.12deg, #5d50e6 15.74%, #aa4cfc 85.33%), #f5f5f5;
+}
+.p__profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: -90px;
+}
+.p__header-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 275px));
+  justify-content: end;
+  margin-top: -35px;
+}
+.p__profile-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 25px;
+  border: 1px solid #eaeaea;
+  margin-right: 10px;
+}
+.p__profile-card p {
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 20px;
+  color: #5d5d5d;
+}
+/*----------
+Activity Details
+---------- */
+.p__grid-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 1140px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.05);
+}
+.p__details-header {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  align-items: center;
+  padding: 50px 25px;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+.g__details-img {
+  max-width: 500px;
+  height: auto;
+}
+.p__dashboard-filters {
+  background: #ffffff;
+  padding: 25px;
+}
+.p__dashboard-cards {
+  background: #f5f5f5;
+  padding: 25px;
+}
+/*----------
 Sidepane
 ---------- */
 .p__sidepane {
@@ -400,6 +521,16 @@ Main Containers
   box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
+  max-width: 1140px;
+  background: #fff;
+  padding: 15px;
+}
+.p__section-full {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-row-gap: 1rem;
+  box-sizing: border-box;
   max-width: 1140px;
   background: #fff;
   padding: 15px;
@@ -459,7 +590,7 @@ Buttons
   text-decoration: none;
   font-family: inherit;
   font-size: 0.9rem;
-  padding: 0.5rem 1.5rem;
+  padding: 0.7rem 1.5rem;
 
   border: 0;
   border-radius: 2rem;
@@ -495,7 +626,7 @@ Buttons
   text-decoration: none;
   font-family: inherit;
   font-size: 0.9rem;
-  padding: 0.5rem 1.5rem;
+  padding: 0.7rem 1.5rem;
   font-weight: 400;
   border: 0;
   border-radius: 2rem;
@@ -557,7 +688,7 @@ Buttons
 }
 /*----- Text link ------ */
 .p__text-link {
-  background: white;
+  background: transparent;
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   color: var(--primary);
@@ -576,6 +707,29 @@ Buttons
   cursor: not-allowed;
   color: var(--gray-200);
 }
+/*----- Add to Calendar ------ */
+.p__add-to-calendar {
+  background: transparent;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  color: #757575;
+  text-decoration: underline;
+  border: 0;
+  font-weight: 400;
+  text-decoration: none;
+  transition: all 0.5s ease;
+}
+.p__add-to-calendar:hover {
+  color: var(--gray-600);
+}
+.p__add-to-calendar:active {
+  color: var(--gray-600);
+}
+.p__add-to-calendar[disabled] {
+  cursor: not-allowed;
+  color: var(--gray-200);
+}
 /*----- toggle ------ */
 .p__toggle-btn {
   background: #e9e6ff;
@@ -585,7 +739,7 @@ Buttons
   text-decoration: none;
   font-family: inherit;
   font-size: 0.9rem;
-  padding: 0.5rem 1.5rem;
+  padding: 0.7rem 1.5rem;
   font-weight: 400;
   border: 0;
   border-radius: 2rem;
@@ -594,12 +748,6 @@ Buttons
 .p__toggle-btn.active {
   color: #e9e6ff;
   background: #5d50e6;
-}
-.p__slim-btn {
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-size: 0.9rem;
-  padding: 0.2rem 1.5rem;
 }
 .p__toggle-btn:hover {
   cursor: pointer;

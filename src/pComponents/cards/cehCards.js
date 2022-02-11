@@ -10,6 +10,11 @@ export default function cehCards(jsonBlock) {
   var mpCardCSS = document.createElement("style");
   mpCardCSS.id = "g__css_" + id;
   mpCardCSS.innerHTML = `
+  ${cssId} .g__no-results{
+    display: flex;
+    justify-content: center;
+    font-size: 1.4rem;
+  }
   ${cssId} .g__container.g__container-row{
     display: grid;
     grid-template-columns: 1fr;
@@ -186,6 +191,14 @@ export default function cehCards(jsonBlock) {
     granite_css.remove();
   }
   document.head.appendChild(mpCardCSS);
+  /* ---- No Results ---- */
+  if (r.length === 0) {
+    const noResults = document.createElement("div");
+    noResults.classList.add("g__no-results");
+    noResults.innerText = "No Results Found";
+    graniteDiv.appendChild(noResults);
+    return;
+  }
   /* ---- Main container ---- */
   const mp_container = document.createElement("div");
   mp_container.classList.add("g__container");
@@ -231,11 +244,11 @@ export default function cehCards(jsonBlock) {
     cardBody.appendChild(cardName);
 
     // Sub Head
-    if (r.host) {
-      const host = document.createElement("h4");
-      host.classList.add("g__card-sub-head");
-      host.innerHTML = r.host;
-      cardBody.appendChild(host);
+    if (r.details) {
+      const details = document.createElement("h4");
+      details.classList.add("g__card-sub-head");
+      details.innerHTML = r.details;
+      cardBody.appendChild(details);
     }
 
     // Description
@@ -243,6 +256,13 @@ export default function cehCards(jsonBlock) {
     cardDescription.classList.add("g__card-description");
     cardDescription.innerHTML = r.description || "Untitled";
     cardBody.appendChild(cardDescription);
+
+    if (o.join_button) {
+      const joinBtn = document.createElement("a");
+      joinBtn.classList.add("p__primary-btn");
+      joinBtn.innerText = "Join Group";
+      mp_card.appendChild(joinBtn);
+    }
 
     if (r.attendees) {
       const cardAttendees = document.createElement("p");
