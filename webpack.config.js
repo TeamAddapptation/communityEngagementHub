@@ -20,6 +20,14 @@ module.exports = {
     ),
     calendar: path.resolve(__dirname, "./src/pages/calendar/calendar.js"),
     profile: path.resolve(__dirname, "./src/pages/profile/profile.js"),
+    profileSettings: path.resolve(
+      __dirname,
+      "./src/pages/profileSettings/profileSettings.js"
+    ),
+    profileChangePassword: path.resolve(
+      __dirname,
+      "./src/pages/profileChangePassword/profileChangePassword.js"
+    ),
   },
   output: {
     filename: "[name].bundle.js",
@@ -74,6 +82,18 @@ module.exports = {
       inject: "body",
       template: "./src/pages/profile/profile.html",
       chunks: ["main", "profile"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "profileSettings.html",
+      inject: "body",
+      template: "./src/pages/profileSettings/profileSettings.html",
+      chunks: ["main", "profileSettings"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "profileChangePassword.html",
+      inject: "body",
+      template: "./src/pages/profileChangePassword/profileChangePassword.html",
+      chunks: ["main", "profileChangePassword"],
     }),
   ],
   module: {

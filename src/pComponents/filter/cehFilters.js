@@ -1,4 +1,4 @@
-function cehFilters(jsonBlock) {
+export default function cehFilters(jsonBlock) {
   const id = jsonBlock.id;
   const graniteDiv = document.getElementById(id);
   const o = jsonBlock.options;

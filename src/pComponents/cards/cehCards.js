@@ -1,4 +1,4 @@
-export default function cehCards(jsonBlock) {
+function cehCards(jsonBlock) {
   const id = jsonBlock.id;
   const graniteDiv = document.getElementById(id);
   const o = jsonBlock.options;
@@ -113,7 +113,10 @@ export default function cehCards(jsonBlock) {
     color: var(--measurement-dark);
   }
   ${cssId} .g__container-row .g__card-body{
-    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 15px;
   }
   ${cssId} .g__container-column .g__card-body{
     display: flex;
@@ -146,6 +149,11 @@ export default function cehCards(jsonBlock) {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+  ${cssId} .g__card-footer{
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
   }
   ${cssId} .g__container-row .g__card-attendees{
     font-size: .9rem;
@@ -257,18 +265,24 @@ export default function cehCards(jsonBlock) {
     cardDescription.innerHTML = r.description || "Untitled";
     cardBody.appendChild(cardDescription);
 
-    if (o.join_button) {
-      const joinBtn = document.createElement("a");
-      joinBtn.classList.add("p__primary-btn");
-      joinBtn.innerText = "Join Group";
-      mp_card.appendChild(joinBtn);
-    }
+    // Footer Container
+    const cardFooter = document.createElement("div");
+    cardFooter.classList.add("g__card-footer");
+    cardBody.appendChild(cardFooter);
 
     if (r.attendees) {
       const cardAttendees = document.createElement("p");
       cardAttendees.classList.add("g__card-attendees");
       cardAttendees.innerHTML = `${r.attendees} Attendees`;
-      cardBody.appendChild(cardAttendees);
+      cardFooter.appendChild(cardAttendees);
+    }
+
+    if (o.join_button) {
+      const joinBtn = document.createElement("a");
+      joinBtn.href = r.href || "#";
+      joinBtn.setAttribute("class", "p__primary-btn p__slim-btn p__mt-10");
+      joinBtn.innerText = "Join Group";
+      cardFooter.appendChild(joinBtn);
     }
 
     mp_card.appendChild(cardBody);
