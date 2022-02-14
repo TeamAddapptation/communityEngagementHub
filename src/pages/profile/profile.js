@@ -1,4 +1,5 @@
 import graniteTable from "../../graniteComponents/table/graniteTable";
+import cehMultiSelectPill from "../../pComponents/multiSelectPills/cehMultiSelectPill";
 
 const myGroups = {
   id: "my-groups",
@@ -59,3 +60,25 @@ const myGroups = {
   ],
 };
 graniteTable(myGroups);
+
+const interests = {
+  id: "interests",
+  options: {
+    formId: "granite-demo",
+    action: "",
+    method: "",
+    enctype: "",
+  },
+  records: [
+    {
+      options: [
+        ["camping__c", "Camping"],
+        ["soccer__c", "Soccer"],
+        ["film__c", "Film"],
+        ["science__c", "Science"],
+        ["computers__c", "Computers"],
+      ],
+    },
+  ],
+};
+cehMultiSelectPill(interests);

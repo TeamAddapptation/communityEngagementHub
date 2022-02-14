@@ -503,7 +503,7 @@ Sidepane
   width: 0; /* 0 width - change this with JavaScript */
   position: fixed;
   z-index: 1;
-  top: 62px;
+  top: 70px;
   right: 0;
   background-color: #ffffff;
   overflow-x: hidden;
