@@ -67,6 +67,10 @@ export default function cehPillFilters(jsonBlock) {
     -webkit-tap-highlight-color: transparent;
     transition: all .2s;
   }
+  ${cssId} .g__filter-option.active label{
+    background-color: #5D50E6;
+    color: #fff;
+  }
   ${cssId} .g__filter-option input[type="checkbox"]:checked + label {
     background-color: #5D50E6;
     color: #fff;
@@ -89,6 +93,11 @@ export default function cehPillFilters(jsonBlock) {
   const filters = document.createElement("div");
   filters.classList.add("a__filters");
 
+  /* ---- Get url parameters ---- */
+  const urlParams = new URLSearchParams(window.location.search);
+  const param = urlParams.get("cateogry");
+  console.log(param);
+
   /* ---- Loop through records ---- */
 
   r.forEach((r, index) => {
@@ -107,13 +116,28 @@ export default function cehPillFilters(jsonBlock) {
       const filterOption = document.createElement("div");
       filterOption.classList.add("g__filter-option");
 
+      /* ---- Get url parameters ---- */
+      const urlParams = new URLSearchParams(window.location.search);
+      const param = urlParams.get(r.sf_field);
+
+      if (param) {
+        // console.log("Param: ", param);
+        // console.log("name: ", option.name);
+        // console.log("name: ", option.value);
+        if (param === option.value) {
+          filterOption.classList.add("active");
+        }
+      }
+
       const filterCheckbox = document.createElement("input");
       filterCheckbox.setAttribute("data-num", index + 1);
       r.sf_field
         ? filterCheckbox.setAttribute("data-sf-field", r.sf_field)
         : "";
-      filterCheckbox.name = option.value.replace(/\s+/g, "-").toLowerCase();
-      filterCheckbox.id = option.value.replace(/\s+/g, "-").toLowerCase();
+      filterCheckbox.name = option.value;
+      filterCheckbox.id = `${r.sf_field}_${option.value
+        .replace(/\s+/g, "-")
+        .toLowerCase()}`;
       filterCheckbox.type = "checkbox";
       filterOption.appendChild(filterCheckbox);
 
@@ -121,16 +145,15 @@ export default function cehPillFilters(jsonBlock) {
       filterLabel.classList.add("g__filter-label");
       filterLabel.setAttribute(
         "for",
-        option.value.replace(/\s+/g, "-").toLowerCase()
+        `${r.sf_field}_${option.value.replace(/\s+/g, "-").toLowerCase()}`
       );
-      filterLabel.innerHTML = option.value;
+      filterLabel.innerHTML = option.name;
       filterOption.appendChild(filterLabel);
 
       filterLabel.addEventListener("click", () => {
-        console.log(option.value.replace(/\s+/g, "-").toLowerCase());
-        let urlParams = `?${r.sf_field}=${r.sf_field}_${option.value
-          .replace(/\s+/g, "-")
-          .toLowerCase()}`;
+        console.log("SF: ", r.sf_field);
+        console.log("value: ", option.value);
+        let urlParams = `?${r.sf_field}=${option.value}`;
         window.location.href = urlParams;
       });
 
@@ -142,5 +165,4 @@ export default function cehPillFilters(jsonBlock) {
 
   /* ---- Append container to page ---- */
   graniteDiv.appendChild(filters);
-  const urlParams = new URLSearchParams(window.location.search);
 }

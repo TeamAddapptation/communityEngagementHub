@@ -442,6 +442,27 @@ Profile
   color: #5d5d5d;
 }
 /*----------
+Profile
+---------- */
+.p__grid-profile-settings {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 1140px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.05);
+}
+.p__profile-settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 25px 25px 25px;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+/*----------
 Activity Details
 ---------- */
 .p__grid-details {
@@ -482,7 +503,7 @@ Sidepane
   width: 0; /* 0 width - change this with JavaScript */
   position: fixed;
   z-index: 1;
-  top: 62px;
+  top: 70px;
   right: 0;
   background-color: #ffffff;
   overflow-x: hidden;
@@ -581,6 +602,7 @@ Buttons
 }
 /*----- Primary ------ */
 .p__primary-btn {
+  display: inline-flex;
   background: white;
   font-family: "Montserrat", sans-serif;
   font-style: normal;
@@ -591,17 +613,9 @@ Buttons
   font-family: inherit;
   font-size: 0.9rem;
   padding: 0.7rem 1.5rem;
-
   border: 0;
   border-radius: 2rem;
   transition: all 0.5s ease;
-}
-.p__slim-btn {
-  color: white;
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-size: 0.9rem;
-  padding: 0.3rem 1.5rem;
 }
 .p__primary-btn:hover {
   cursor: pointer;
@@ -631,12 +645,6 @@ Buttons
   border: 0;
   border-radius: 2rem;
   transition: all 0.5s ease;
-}
-.p__slim-btn {
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-size: 0.9rem;
-  padding: 0.2rem 1.5rem;
 }
 .p__large-btn {
   color: white;
@@ -713,7 +721,7 @@ Buttons
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-size: 16px;
-  color: #757575;
+  color: #d4d4d4;
   text-decoration: underline;
   border: 0;
   font-weight: 400;
@@ -721,7 +729,8 @@ Buttons
   transition: all 0.5s ease;
 }
 .p__add-to-calendar:hover {
-  color: var(--gray-600);
+  cursor: pointer;
+  color: #aeaeae;
 }
 .p__add-to-calendar:active {
   color: var(--gray-600);
@@ -815,7 +824,6 @@ Buttons
 Button Utility
 ---------- */
 .p__slim-btn {
-  color: white;
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-size: 0.9rem;
@@ -1016,6 +1024,77 @@ select.p__select-input {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+#g__custom-form .g__form_field.g__custom-field {
+  flex-direction: row;
+}
+#g__custom-form .g__form_field.g__custom-field label {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  margin-right: 20px;
+  color: #101010;
+  font-size: 18px;
+}
+#g__custom-form .g__form_field.g__custom-field input {
+  flex: 1;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  border-radius: 0;
+  border: 0;
+  background: #f7f7f7;
+  border-bottom: 1px solid #a1a1a1;
+  padding: 10px 15px;
+  color: #5d5d5d;
+  font-size: 14px;
+}
+#g__custom-form .g__picklist {
+  flex: 1;
+}
+#g__custom-form .g__default_picklist .g__field_picklist.g__select_default {
+  display: block;
+  position: relative;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  border-radius: 0;
+  border: 0;
+  background: #f7f7f7;
+  border-bottom: 1px solid #a1a1a1;
+  padding: 10px 15px;
+  color: #5d5d5d;
+  font-size: 14px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+#g__custom-form .g__password_container {
+  flex: 1;
+}
+#g__custom-form input:-webkit-autofill,
+#g__custom-form input:-webkit-autofill:hover,
+#g__custom-form input:-webkit-autofill:focus {
+  border: 1px solid #5d50e6;
+  -webkit-text-fill-color: #a1a1a1;
+  box-shadow: 0 0 0px 1000px #ffffff inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+#g__custom-form #g__submit_cancel.g__button_container #g__submit_btn {
+  background: white;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  background: #5d50e6;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.7rem 1.5rem;
+  border: 0;
+  border-radius: 2rem;
+  transition: all 0.5s ease;
 }
 /* ----------
 Top Bar Tabs

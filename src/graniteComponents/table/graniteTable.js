@@ -1,4 +1,4 @@
-function graniteTable(jsonBlock) {
+export default function graniteTable(jsonBlock) {
   /*---------------------------------------------
     Global Variables
     ---------------------------------------------*/
@@ -26,7 +26,7 @@ function graniteTable(jsonBlock) {
     font-style: normal;
     font-weight: 500;
     font-size: ${fontSize};
-    table-layout: ${o.fixed ? "fixed" : auto};
+    table-layout: ${o.fixed ? "fixed" : "auto"};
     color: var(--body-font);
     border-collapse: collapse;
     width: 100%;

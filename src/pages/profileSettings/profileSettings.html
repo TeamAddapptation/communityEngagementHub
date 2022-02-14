@@ -9,10 +9,6 @@
     <link rel="stylesheet" href="https://use.typekit.net/omg7yww.css" />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.2/main.min.css"
-    />
-    <link
-      rel="stylesheet"
       href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"
     />
     <link
@@ -24,38 +20,26 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css"
     />
-
     <title>Addapptation</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="hub-navigation"></div>
-    <div class="p__grid-dashboard">
-      <main class="p__dashboard-main">
-        <div class="p__dashboard-header">
-          <div class="p__flex-column">
-            <h2 class="g__page-header">Hero Header</h2>
-            <h2 class="g__page-sub">Simple description lorem ipsum dolor</h2>
+    <div class="p__grid-profile-settings">
+      <main class="p__profile-settings-main">
+        <div class="p__profile-settings-header p__align-center">
+            <h2 class="g__page-header">Profile Settings</h2>
+            <a href="#" class="p__add-to-calendar">Change Password</button>
+        </div>
+        <div class="p__section-full p__mt-25">
+          <div id="g__custom-form">
+            <div id="profile-settings"></div>
           </div>
-        </div>
-        <div class="p__calendar">
-          <div id="main-calendar"></div>
-        </div>
+        <div class="p__section-full p__mt-25">
+          <h2 class="g__page-header-small p__mt-25">My Interests</h2>
+            <div id="my-interests"></div>
       </main>
-      <div id="p__sidepane" class="p__sidepane">
-        <button type="button" class="p__close-btn" id="p__sidepane-close">
-          &times;
-        </button>
-        <div class="p__sidepan-content">
-          <iframe
-            src="https://t-demo-community-engagement-hub.addapptation.com/activity?"
-            style="height: 100%; width: 100%"
-            title="Iframe Example"
-          ></iframe>
-        </div>
-      </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.2/main.min.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="

@@ -9,14 +9,14 @@ const DashboardPillFilters = {
   records: [
     {
       name: "Trips",
-      sf_field: "trips",
+      sf_field: "trips__c",
       children: [
-        { value: "Trips", field: "checkbox" },
-        { value: "Sports", field: "checkbox" },
-        { value: "Youth Programs", field: "checkbox" },
-        { value: "Art", field: "checkbox" },
-        { value: "Education", field: "checkbox" },
-        { value: "Events", field: "checkbox" },
+        { value: "Trips", name: "Trips", field: "checkbox" },
+        { value: "Sports", name: "Sports", field: "checkbox" },
+        { value: "Youth Programs", name: "Youth Programs", field: "checkbox" },
+        { value: "Art", name: "Art", field: "checkbox" },
+        { value: "Education", name: "Education", field: "checkbox" },
+        { value: "Events", name: "Events", field: "checkbox" },
       ],
     },
   ],
