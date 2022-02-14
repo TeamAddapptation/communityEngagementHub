@@ -1164,6 +1164,9 @@ Auth Access
   left: 70px;
 }
 @media only screen and (max-width: 768px) {
+  .p__details-header {
+    grid-template-columns: 1fr;
+  }
   .p__dashboard-header {
     flex-direction: column;
   }
