@@ -296,6 +296,10 @@ Layout
   display: grid;
   grid-auto-columns: auto;
 }
+.p__space-between {
+  display: flex;
+  justify-content: space-between;
+}
 /*----------
 Calendar Layout
 ---------- */
@@ -342,15 +346,27 @@ Activities Groups Layout
 ---------- */
 .p__grid-container {
   display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-areas: "p__side-filters p__main";
+  grid-template-columns: 250px 1fr;
+  grid-template-areas:
+    "p__activity-header p__activity-header"
+    "p__side-filters p__main";
   max-width: 1140px;
   margin: 0 auto;
-  height: 100vh;
   background: #ffffff;
   border: 1px solid #eaeaea;
   box-sizing: border-box;
   box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.05);
+}
+.p__activity-header {
+  grid-area: p__activity-header;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-right: 1px solid #eaeaea;
+  border-left: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
+  padding: 15px 25px;
 }
 .p__side-filters {
   grid-area: p__side-filters;
@@ -360,6 +376,7 @@ Activities Groups Layout
 .p__main {
   grid-area: p__main;
   background-color: #f5f5f5;
+  height: 100vh;
 }
 .p__main-header {
   display: flex;
@@ -379,6 +396,15 @@ Activities Groups Layout
   height: 65px;
   background: #ffffff;
   border-bottom: 1px solid #eaeaea;
+}
+.g__activity-search {
+  background: #eaeaea;
+  color: #a1a1a1;
+  border-radius: 50px;
+  font-size: 1rem;
+  border: 0;
+  padding: 3px 15px;
+  margin-left: 25px;
 }
 .p__main-cards {
   padding: 25px;
@@ -444,6 +470,9 @@ Profile
 /*----------
 Profile
 ---------- */
+.p__profile-settings-main {
+  min-height: 90vh;
+}
 .p__grid-profile-settings {
   display: grid;
   grid-template-columns: 1fr;
@@ -456,8 +485,7 @@ Profile
 }
 .p__profile-settings-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   padding: 50px 25px 25px 25px;
   box-sizing: border-box;
   background: #ffffff;
@@ -482,6 +510,29 @@ Activity Details
   padding: 50px 25px;
   box-sizing: border-box;
   background: #ffffff;
+}
+.g__image-container {
+  position: relative;
+}
+.g__overview-star {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  box-sizing: border-box;
+  border-radius: 50%;
+  padding: 8px;
+  color: #eaeaea;
+  font-size: 1.4rem;
+  transition: all 0.5s ease;
+}
+.g__overview-star:hover {
+  cursor: pointer;
+  color: #f4d66c;
+}
+.g__overview-star.active {
+  color: #f4d66c;
 }
 .g__details-img {
   max-width: 500px;
@@ -603,10 +654,11 @@ Buttons
 /*----- Primary ------ */
 .p__primary-btn {
   display: inline-flex;
+  justify-content: center;
   background: white;
   font-family: "Montserrat", sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   background: var(--primary);
   color: #ffffff;
   text-decoration: none;
@@ -641,7 +693,7 @@ Buttons
   font-family: inherit;
   font-size: 0.9rem;
   padding: 0.7rem 1.5rem;
-  font-weight: 400;
+  font-weight: 500;
   border: 0;
   border-radius: 2rem;
   transition: all 0.5s ease;
@@ -671,7 +723,7 @@ Buttons
   background: white;
   font-family: "Montserrat", sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   color: #5d50e6;
   text-decoration: none;
   font-family: inherit;
@@ -738,6 +790,46 @@ Buttons
 .p__add-to-calendar[disabled] {
   cursor: not-allowed;
   color: var(--gray-200);
+}
+/*----- Add ------ */
+.p__add-btn {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  background: #ffffff;
+  color: #5d50e6;
+  border: 1px solid #5d50e6;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 2rem;
+  transition: all 0.5s ease;
+}
+.p__add-btn i {
+  margin-left: 5px;
+}
+.p__add-btn.active {
+  color: #5d50e6;
+  background: #e9e6ff;
+}
+.p__add-btn:hover {
+  cursor: pointer;
+  color: #5d50e6;
+  background: #e9e6ff;
+}
+.p__add-btn:active {
+  color: #fff;
+  background: var(--primary-dark);
+}
+.p__add-btn.added {
+  color: #5d50e6;
+  background: #e9e6ff;
+  border: 1px solid #e9e6ff;
+}
+.p__add-btn[disabled="true"] {
+  cursor: not-allowed;
+  background: var(--disabled);
 }
 /*----- toggle ------ */
 .p__toggle-btn {
@@ -1036,6 +1128,9 @@ select.p__select-input {
   color: #101010;
   font-size: 18px;
 }
+#g__custom-form .g__form_field.g__custom-field .g__field_info {
+  width: 22%;
+}
 #g__custom-form .g__form_field.g__custom-field input {
   flex: 1;
   font-family: "Montserrat", sans-serif;
@@ -1097,46 +1192,9 @@ select.p__select-input {
   transition: all 0.5s ease;
 }
 /* ----------
-Top Bar Tabs
+Setting Tabs
 ----------*/
-#tabs-menu.g__line_style {
-  max-width: 1140px;
-  margin: 0 auto;
-}
-.a__main-tabs-wrapper {
-  margin: 0 auto;
-  background: #ffffff;
-  border: 1px solid #eaeaea;
-}
-#tabs-menu.g__line_style .g__tabs_wrapper {
-  padding: 0;
-}
-#tabs-menu.g__line_style .g__tab_line .g__tab_line_wrap {
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-#tabs-menu.g__line_style .g__tab_line .g__active {
-  color: #000000;
-  border-bottom: 4px solid #5d50e6;
-}
-#tabs-menu.g__line_style
-  .g__tab_line
-  .g__tab_line_wrap.g__active
-  a.g__tab_line_link,
-#tabs-menu.g__line_style .g__tab_line .g__tab_line_wrap.g__active i {
-  color: #000000;
-}
-#tabs-menu.g__line_style {
-  font-family: hero-new, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  background: #ffffff;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-#tabs-menu.g__line_style .g__tabs_container.g__tab_line {
-  border-bottom: 0;
-}
+
 /*----------
 Auth Access
 ---------- */
@@ -1164,6 +1222,13 @@ Auth Access
   left: 70px;
 }
 @media only screen and (max-width: 768px) {
+  .p__details-body {
+    order: 1;
+    margin-top: 25px;
+  }
+  .p__detail-image {
+    order: 0;
+  }
   .p__details-header {
     grid-template-columns: 1fr;
   }

@@ -56,6 +56,7 @@ export default function graniteTable(jsonBlock) {
   }
   ${cssId} table tbody tr td{
     position: relative;
+    border-bottom: 1px solid #eaeaea;
   }
   ${cssId} table tbody tr td a:hover{
     color: var(--gray-400);
@@ -159,11 +160,11 @@ export default function graniteTable(jsonBlock) {
   }
   ${cssId} table.dataTable thead th{
     font-size: .8rem;
-    color: var(--gray-400);
+    color: #5d5d5d;
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 700;
-    padding: 10px 18px 10px 25px;
+    padding: 10px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -181,6 +182,7 @@ export default function graniteTable(jsonBlock) {
     font-size: ${fontSize};
   }
   ${cssId} .dataTables_info{
+    display: inline-block;
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-size: ${fontSize};
@@ -188,6 +190,7 @@ export default function graniteTable(jsonBlock) {
     font-weight: 400;
   }
   ${cssId} .dataTables_paginate{
+    display: inline-block;
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-size: ${fontSize};
@@ -208,10 +211,20 @@ export default function graniteTable(jsonBlock) {
     position: relative;
   }
   /* ---------- Not selected ---------- */
-  ${cssId} table.dataTable thead th.sorting{
-    background-image: none !important;
+  ${cssId} table.dataTable thead th.sorting:before{
+    display: none;
+  }
+  ${cssId} table.dataTable thead th.sorting:hover:before{
+    display: block;
+  }
+  ${cssId} table.dataTable thead th.sorting:after{
+    display: none;
+  }
+  ${cssId} table.dataTable thead th.sorting:hover:after{
+    display: block;
   }
   ${cssId} table.dataTable thead th .sorting:after {
+    display: block;
     font-family: "Font Awesome 5 Pro";
     font-weight: 300;
     content: "\\f106";
@@ -221,6 +234,7 @@ export default function graniteTable(jsonBlock) {
     right: 5px;
   }
   ${cssId} table.dataTable thead th .sorting:before {
+    display: block;
     font-family: "Font Awesome 5 Pro";
     font-weight: 300;
     content: "\\f107";
@@ -230,10 +244,8 @@ export default function graniteTable(jsonBlock) {
     right: 5px;
   }
   /* ---------- Asc selected ---------- */
-  ${cssId} table.dataTable thead th.sorting_asc{
-    background-image: none !important;
-  }
   ${cssId} table.dataTable thead .sorting.sorting_asc:after {
+    display: block;
     font-family: "Font Awesome 5 Pro";
     font-weight: 300;
     content: "\\f106";
@@ -243,6 +255,7 @@ export default function graniteTable(jsonBlock) {
     right: 10px;
   }
   ${cssId} table.dataTable thead .sorting.sorting_asc:before {
+    display: block;
     font-family: "Font Awesome 5 Pro";
     font-weight: 300;
     content: "";
@@ -252,10 +265,8 @@ export default function graniteTable(jsonBlock) {
     right: 10px;
   }
   /* ---------- Desc selected ---------- */
-  ${cssId} table.dataTable thead th.sorting_desc{
-    background-image: none !important;
-  }
   ${cssId} table.dataTable thead .sorting.sorting_desc:after {
+    display: block;
     font-family: "Font Awesome 5 Pro";
     font-weight: 300;
     content: "";
@@ -265,6 +276,7 @@ export default function graniteTable(jsonBlock) {
     right: 5px;
   }
   ${cssId} table.dataTable thead .sorting.sorting_desc:before {
+    display: block;
     font-family: "Font Awesome 5 Pro";
     font-weight: 300;
     content: "\\f107";
@@ -284,6 +296,15 @@ export default function graniteTable(jsonBlock) {
     position: absolute;
     margin-top: 5px;
     margin-left: 5px;
+    z-index: 5px;
+  }
+  ${cssId} .dt-buttons {
+    display: inline-block;
+    margin-top: 10px;
+  }
+  ${cssId} div.dataTables_wrapper div.dataTables_filter {
+    display: inline-block;
+    float: right;
   }
   ${cssId} .dataTables_filter input{
     position: relative;
@@ -439,12 +460,6 @@ export default function graniteTable(jsonBlock) {
           next: "<i class='far fa-chevron-right'></i>",
         },
       },
-      columnDefs: [
-        {
-          targets: [0] /* column index */,
-          orderable: false /* true or false */,
-        },
-      ],
     });
   }
   /*---------------------------------------------

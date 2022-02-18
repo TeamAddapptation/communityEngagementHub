@@ -1,0 +1,1 @@
+(()=>{var e=document.querySelectorAll(".g__overview-star");e.length&&e.forEach((function(e){e.addEventListener("click",(function(){e.classList.toggle("active")}))}))})();

@@ -65,6 +65,7 @@ const interests = {
   id: "interests",
   options: {
     formId: "granite-demo",
+    editable: true,
     action: "",
     method: "",
     enctype: "",

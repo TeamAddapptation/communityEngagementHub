@@ -26,22 +26,28 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="hub-navigation"></div>
     <div class="p__grid-container">
+      <header class="p__activity-header">
+        <div class="p__flex-col p__align-center">
+          <h2 class="g__page-header">Activities</h2>
+          <input
+            type="text"
+            id="g__search"
+            placeholder="Search"
+            class="g__activity-search"
+          />
+        </div>
+        <div class="p__flex-col">
+          <a href="#" class="p__toggle-btn p__slim-btn active">Activities</a>
+          <div class="p__btn-divider"></div>
+          <a href="#" class="p__toggle-btn p__slim-btn">Groups</a>
+          <div id="ceg-activities-filter"></div>
+        </div>
+      </header>
       <aside class="p__side-filters">
         <h2 class="g__page-sub p__filters-header">Filters</h2>
         <div id="ceg_activity-filters"></div>
       </aside>
       <main class="p__main">
-        <div class="p__main-header">
-          <div class="p__flex-col">
-            <h2 class="g__page-header">Activities</h2>
-          </div>
-          <div class="p__flex-col">
-            <a href="#" class="p__toggle-btn p__slim-btn active">Activities</a>
-            <div class="p__btn-divider"></div>
-            <a href="#" class="p__toggle-btn p__slim-btn">Groups</a>
-            <div id="ceg-activities-filter"></div>
-          </div>
-        </div>
         <div class="p__main-cards">
           <div id="ceg-activity-cards"></div>
         </div>

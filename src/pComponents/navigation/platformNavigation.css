@@ -3,6 +3,9 @@
   display: flex;
   justify-content: center;
 }
+.a__link:hover {
+  cursor: pointer;
+}
 h4.a__page-name {
   color: #ffffff;
   font-size: 1.15rem;
@@ -21,9 +24,9 @@ h4.a__page-name {
   display: block;
 }
 .a__nav-container {
-  font-family: hero-new, sans-serif;
-  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
   font-style: normal;
+  font-weight: 400;
   flex: 1;
   max-width: 1140px;
   background-color: rgba(16, 16, 16, 1);
@@ -46,6 +49,63 @@ h4.a__page-name {
 }
 .a__dropdown {
   position: relative;
+}
+.a__notification {
+  position: relative;
+}
+.a__notification-container {
+  display: none;
+  position: absolute;
+  top: 38px;
+  right: 0;
+  width: 200px;
+  background: #ffffff;
+  border: 0.5px solid #eaeaea;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  z-index: 5;
+}
+.a__notification-container.active {
+  display: block;
+}
+.g__notication-item {
+  padding: 15px;
+  border-bottom: 1px solid #eaeaea;
+}
+.g__notificatin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.g__notication-item h2.g__event-name {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  margin: 5px 0;
+  line-height: 17px;
+  color: #101010;
+}
+.g__notificatin-header h3 {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #101010;
+}
+.g__notificatin-header .g__close {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: #5d5d5d;
+  transition: all 0.5s ease;
+}
+.g__notificatin-header .g__close:hover {
+  cursor: pointer;
+  color: #acacac;
 }
 .a__dropdown-container {
   display: none;
@@ -73,6 +133,23 @@ h4.a__page-name {
 .a__dropdown-container .a__dropdown-link:hover {
   background: #f3f7ff;
   color: #5d50e6;
+}
+/*----------
+Notifications
+-----------*/
+.g__notification-bell {
+  position: relative;
+}
+.notification-count {
+  position: absolute;
+  top: 10px;
+  left: 13px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  font-size: 10px;
+  color: #ffffff;
+  background: #d32f2f;
 }
 /*----------
 Menu Links

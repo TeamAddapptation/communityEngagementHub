@@ -1,0 +1,12 @@
+#main-calendar td.fc-daygrid-day.fc-day.fc-day-thu.fc-day-today {
+  background-color: #e9e6ff;
+}
+button.fc-today-button.fc-button.fc-button-primary {
+  background-color: #e9e6ff;
+  border: 0;
+}
+#main-calendar button.fc-prev-button.fc-button.fc-button-primary,
+#main-calendar button.fc-next-button.fc-button.fc-button-primary {
+  background-color: #e9e6ff;
+  border: 0;
+}

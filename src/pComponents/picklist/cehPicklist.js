@@ -61,6 +61,14 @@ export default function cehPicklist(jsonBlock) {
   if (o.href_select) {
     filter.setAttribute("onChange", "location = this.value;");
   }
+  filter.addEventListener("change", (e) => {
+    const currentParams = new URLSearchParams(window.location.search);
+    const paramLength = currentParams.toString().length;
+    const selectedValue = e.target.value;
+    const key = o.sf_key || "sort";
+    const newQuery = currentParams.set(key, selectedValue);
+    window.location.href = `?${currentParams.toString()}`;
+  });
   filter.classList.add("g__elm_select");
   !!o.select_id ? (filter.id = o.select_id) : "";
   !!o.select_id ? (filter.name = o.select_id) : "";

@@ -1,4 +1,4 @@
-export default function cehCards(jsonBlock) {
+function cehCards(jsonBlock) {
   const id = jsonBlock.id;
   const graniteDiv = document.getElementById(id);
   const o = jsonBlock.options;
@@ -65,6 +65,7 @@ export default function cehCards(jsonBlock) {
   }
   ${cssId} .g__card-star:hover{
     cursor: pointer;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
     color: #F4D66C;
   }
   ${cssId} .g__card-star.active{
@@ -94,6 +95,9 @@ export default function cehCards(jsonBlock) {
     border-radius: 5px;
     width: auto;
     transition: all 0.5s ease;
+  }
+  ${cssId} .g__image-container:hover img{
+    transform: scale(1.02);
   }
   ${cssId} .g__type-label{
     position: absolute;
@@ -218,6 +222,9 @@ export default function cehCards(jsonBlock) {
   r.forEach((r, index) => {
     const mp_card = document.createElement("div");
     mp_card.classList.add("g__card");
+    if (r.id) {
+      mp_card.setAttribute("data-id", r.id);
+    }
     // Top image container
     const imgContainer = document.createElement("a");
     imgContainer.href = r.href;
@@ -233,6 +240,7 @@ export default function cehCards(jsonBlock) {
     if (o.star) {
       const star = document.createElement("i");
       star.setAttribute("class", "fas fa-star g__card-star");
+      r.isStarred ? star.classList.add("active") : "";
       mp_card.appendChild(star);
       star.addEventListener("click", () => {
         star.classList.toggle("active");
@@ -270,12 +278,10 @@ export default function cehCards(jsonBlock) {
     cardFooter.classList.add("g__card-footer");
     cardBody.appendChild(cardFooter);
 
-    if (r.attendees) {
-      const cardAttendees = document.createElement("p");
-      cardAttendees.classList.add("g__card-attendees");
-      cardAttendees.innerHTML = `${r.attendees} Attendees`;
-      cardFooter.appendChild(cardAttendees);
-    }
+    const cardAttendees = document.createElement("p");
+    cardAttendees.classList.add("g__card-attendees");
+    cardAttendees.innerHTML = `${r.attendees} ${o.memberName || "Attendees"}`;
+    cardFooter.appendChild(cardAttendees);
 
     if (o.join_button) {
       const joinBtn = document.createElement("a");

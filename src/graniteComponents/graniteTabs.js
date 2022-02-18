@@ -202,7 +202,7 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
       transition: none;
     }
     ${cssId} .g__tabs_wrapper{
-      padding: 15px;
+      padding: 15px 0;
       position: relative;
       overflow-x: auto;
       overflow-y: hidden;
@@ -275,7 +275,7 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
     }
     ${cssId} .g__tab_line .g__active{
       color: ${activeColor};
-      border-bottom: 4px solid ${fontActiveColor};
+      border-bottom: 2px solid ${fontActiveColor};
     }
     /* ------------------------------------------------------------
     Tabs Block
@@ -311,7 +311,7 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
     ${cssId} .g__tab_block a.g__tab_block_wrap:hover i{
       color: ${fontHoverColor};
     }
-    ${cssId} .g__tab_block a.g__tab_block_wrap.g__active{
+    ${cssId} .g__tab_block a.g__tab_block_wrap.g__active p{
       background: ${activeColor};
       color: ${fontActiveColor};
     }

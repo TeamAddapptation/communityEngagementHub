@@ -28,6 +28,10 @@ module.exports = {
       __dirname,
       "./src/pages/profileChangePassword/profileChangePassword.js"
     ),
+    profileInterests: path.resolve(
+      __dirname,
+      "./src/pages/profileInterests/profileInterests.js"
+    ),
   },
   output: {
     filename: "[name].bundle.js",
@@ -94,6 +98,17 @@ module.exports = {
       inject: "body",
       template: "./src/pages/profileChangePassword/profileChangePassword.html",
       chunks: ["main", "profileChangePassword"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "profileInterests.html",
+      inject: "body",
+      template: "./src/pages/profileInterests/profileInterests.html",
+      chunks: ["main", "profileInterests"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "cookie.html",
+      inject: "body",
+      template: "./src/pages/cookie/cookie.html",
     }),
   ],
   module: {

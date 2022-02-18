@@ -1,4 +1,4 @@
-export default function cehPillFilters(jsonBlock) {
+function cehPillFilters(jsonBlock) {
   const id = jsonBlock.id;
   const graniteDiv = document.getElementById(id);
   const o = jsonBlock.options;
@@ -66,6 +66,10 @@ export default function cehPillFilters(jsonBlock) {
     user-select: none;
     -webkit-tap-highlight-color: transparent;
     transition: all .2s;
+  }
+  ${cssId} .g__filter-option label:hover{
+    background-color: #5D50E6;
+    color: #fff;
   }
   ${cssId} .g__filter-option.active label{
     background-color: #5D50E6;

@@ -1,5 +1,7 @@
 import graniteCalendar from "../../graniteComponents/calendar/graniteCalendar";
 
+import "./calendar.css";
+
 const calendarEvents = {
   id: "main-calendar",
   options: {},

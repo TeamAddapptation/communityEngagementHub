@@ -1,0 +1,313 @@
+<style>
+  #gdpr_bar {
+    border: 1px solid #eaeaea;
+    padding: 10px;
+    border-radius: 10px;
+    position: fixed;
+    margin: 10px;
+    z-index: 9999999999;
+  }
+  .a__cookie-container {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+  }
+  .a__cookie-img {
+    font-size: 80px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: -60px;
+    margin-bottom: 20px;
+    padding: 30px;
+  }
+  h2.a__cookie-heading {
+    font-size: 24px;
+    color: #101010;
+    margin-bottom: 15px;
+  }
+  p.a__cookie-body {
+    font-size: 16px;
+    color: #5d5d5d;
+    margin-bottom: 15px;
+  }
+  .a__button_wrapper {
+    display: inline-block;
+  }
+  .a__cookie-btn-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+  }
+  .a__accept-btn {
+    display: inline-flex;
+    justify-content: center;
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    background: #5d50e6;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 0.9rem;
+    padding: 0.7rem 1.8rem;
+    border: 0;
+    border-radius: 2rem;
+    transition: all 0.5s ease;
+  }
+  .a__accept-btn:hover {
+    cursor: pointer;
+    color: #ffffff;
+    background: #7d73eb;
+  }
+  .a__text-btn {
+    display: inline-flex;
+    justify-content: center;
+    background: transparent;
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    color: #5d50e6;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 1rem;
+    border: 0;
+    border-radius: 2rem;
+    transition: all 0.5s ease;
+  }
+  .a__text-btn:hover {
+    cursor: pointer;
+    color: #7d73eb;
+  }
+
+  .gdpr_button {
+    position: relative;
+    z-index: 5;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 30px;
+    background-color: #5d50e6;
+    background-image: none;
+    text-decoration: none;
+    padding: 12px 25px;
+    -webkit-transition: background-color 400ms ease, opacity 400ms ease,
+      color 400ms ease;
+    transition: background-color 400ms ease, opacity 400ms ease,
+      color 400ms ease;
+    color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  @media only screen and (max-width: 768px) {
+    .a__cookie-container {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  var createElement = function (a, b) {
+    var el = document.createElement(a);
+    if (b && "object" == typeof b) {
+      var e;
+      for (e in b) {
+        if ("html" === e) {
+          el.innerHTML = b[e];
+        } else if ("style" === e) {
+          // console.log("create element, process style");
+          var prop;
+          for (prop in b[e]) {
+            // console.log("prop: "+prop);
+            // console.log("value(b[e][prop]): " + b[e][prop]);
+            el.style.setProperty(prop, b[e][prop]);
+          }
+        } else {
+          el.setAttribute(e, b[e]);
+        }
+      }
+    }
+    return el;
+  };
+  function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+  function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(";");
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == " ") c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  }
+  function eraseCookie(name) {
+    document.cookie = name + "=; Max-Age=-99999999;";
+  }
+
+  function notification_bar_micro(json) {
+    const btn_action_hide = "hide";
+    const btn_aciton_link = "link";
+    const cookie_name = "a__gdpr";
+    const cookie_accepted = "accepted";
+    /*-----------------------------------
+    INITIALIZE ATTRIBUTES
+  -----------------------------------*/
+    let attr__classes = json.classes || "";
+    let attr__content = json.options.content || "";
+    let attr__heading = json.options.heading || "";
+    let attr__alignment = json.options.alignment || "left";
+    let attr__max_width = json.options.max_width || "none";
+    let attr__background_color = json.options.background_color || "transparent";
+    let attr__color = json.options.text_color || "#404040";
+    let attr__font_size = json.options.font_size || "1.25rem";
+    let attr__height = json.options.height || "auto";
+    let attr__orientation = json.options.orientation || "top";
+    let attr__button_label = json.options.button_label || "";
+    let attr__button_link = json.options.button_link || "";
+    let attr__button_classes = json.options.button_classes || "";
+    let attr__button_action = json.options.button_action || "";
+
+    /*-----------------------------------
+    SET CSS VARIABLES
+  -----------------------------------*/
+
+    const cssId = `#${json.id}`;
+
+    var css = document.createElement("style");
+
+    let top = "0";
+    let bottom = "auto";
+    let display = "block";
+
+    switch (attr__orientation) {
+      case "bottom":
+        top = "auto";
+        bottom = "0";
+        break;
+      default:
+    }
+
+    let cookie = getCookie(cookie_name);
+    console.log("cookie: " + cookie);
+    if (!!cookie && cookie == cookie_accepted) {
+      display = "none";
+    }
+
+    css.innerHTML = `
+      ${cssId}.a__notification_bar {
+        display: ${display};
+        background: ${attr__background_color};
+        color: ${attr__color};
+        text-align:  ${attr__alignment};
+        height:  ${attr__height};
+        font-size: ${attr__font_size};
+        top: ${top};
+        bottom: ${bottom};
+        padding: 10px 25px 25px 25px;
+
+      }
+    `;
+
+    document.head.appendChild(css);
+
+    /*-----------------------------------
+    BUILD CONTENT
+  -----------------------------------*/
+
+    const a__text = document.getElementById(json.id);
+    a__text.className = `a__notification_bar ${attr__classes}`;
+
+    let text_container = createElement("div", {
+      class: "a__cookie-container",
+    });
+
+    let cookieImg = createElement("div", {
+      class: "a__cookie-img",
+      html: "&#x1F36A;",
+    });
+    text_container.append(cookieImg);
+
+    if (!!attr__heading) {
+      let heading = createElement("h2", {
+        class: "a__cookie-heading",
+        html: `${attr__heading}`,
+      });
+      text_container.append(heading);
+    }
+
+    if (!!attr__content) {
+      let content = createElement("p", {
+        html: attr__content,
+        class: "a__cookie-body",
+      });
+      text_container.append(content);
+    }
+
+    const btnContainer = createElement("div", {
+      class: "a__cookie-btn-container",
+    });
+
+    let learnBtn = createElement("a", {
+      class: "a__text-btn",
+      href: "https://addapptation-installer.addapptation.com/privacy_policy",
+      target: "_blank",
+      html: "Learn More",
+    });
+    btnContainer.appendChild(learnBtn);
+
+    let acceptBtn = createElement("a", {
+      class: "a__accept-btn",
+      html: "Accept Cookies",
+    });
+    btnContainer.appendChild(acceptBtn);
+
+    text_container.append(btnContainer);
+
+    if (attr__button_action == btn_action_hide) {
+      acceptBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        setCookie(cookie_name, cookie_accepted, "365");
+        let el = document.getElementById(json.id);
+        console.log(el);
+        el.style.display = "none";
+        el.style.height = "0";
+        el.style.bottom = "-1rem"; /* fixes some bottom offset positioning */
+        console.log("handle accept button event");
+      });
+    }
+
+    a__text.append(text_container);
+  }
+</script>
+
+<div id="gdpr_bar"></div>
+<script>
+  notification_bar_micro({
+    id: "gdpr_bar",
+    classes: "container-fluid pt-3",
+    records: "",
+    options: {
+      color: "#404040",
+      background_color: "#ffffff",
+      heading: "Your choice regarding cookies on this site",
+      content:
+        "We use cookies to optimize site functionality and give you the best possible experience.",
+      button_label: "Accept",
+      button_link: "#",
+      button_classes: "px-5 gdpr_button",
+      button_action: "hide",
+      height: "",
+      orientation: "bottom",
+    },
+  });
+</script>

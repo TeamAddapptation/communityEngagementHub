@@ -66,6 +66,7 @@ cehCards(activityCards);
 const activityPicklist = {
   id: "ceg-activities-filter",
   options: {
+    sf_key: "sf_key",
     select_id: "activities-picklist",
     placeholder: "Sort By",
     classes: "p__ml-15",
@@ -78,3 +79,8 @@ const activityPicklist = {
   records: [],
 };
 cehPicklist(activityPicklist);
+
+const search = document.getElementById("g__search");
+search.addEventListener("input", () => {
+  console.log("Change");
+});

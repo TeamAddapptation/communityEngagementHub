@@ -1,4 +1,4 @@
-function cehMultiSelectPill(jsonBlock) {
+export default function cehMultiSelectPill(jsonBlock) {
   const id = jsonBlock.id;
   const graniteDiv = document.getElementById(id);
   const o = jsonBlock.options;
@@ -36,22 +36,23 @@ function cehMultiSelectPill(jsonBlock) {
     font-size: 14px;
     border: 1px solid #EAEAEA;
     box-sizing: border-box;
-    padding: 5px 30px;
+    padding: 5px 70px;
     border-radius: 20px;
-    margin-right: 5px;
+    margin-top: 10px;
+    margin-right: 10px;
     transition: all 0.5s ease;
   }
   ${cssId} .g__custom-option i{
     margin-left: 10px;
   }
-  ${cssId} .g__custom-option:hover{
+  ${cssId} .g__custom-option.g__click:hover{
     cursor: pointer;
     background: #DAF3E9;
     color: #00B267;
   }
   ${cssId} .g__custom-option.active{
     cursor: pointer;
-    background: #DAF3E9;
+    background: #ffffff;
     color: #00B267;
   }
   `;
@@ -92,7 +93,13 @@ function cehMultiSelectPill(jsonBlock) {
       const customOption = document.createElement("div");
       customOption.setAttribute("data-index", index);
       customOption.classList.add("g__custom-option");
-      customOption.innerHTML = `${option[1]} <i class="fa fa-thin fa-plus"></i>`;
+
+      if (o.editable) {
+        customOption.classList.add("g__custom-option", "g__click");
+        customOption.innerHTML = `${option[1]} <i class="fa fa-thin fa-plus"></i>`;
+      } else {
+        customOption.innerHTML = option[1];
+      }
       customSelect.appendChild(customOption);
     });
   });
@@ -104,7 +111,7 @@ function cehMultiSelectPill(jsonBlock) {
   const customOptionArr = document.querySelectorAll(".g__custom-option");
   const defaultSelect = document.getElementById(`custom-${id}`);
 
-  if (customOptionArr.length) {
+  if (customOptionArr.length && o.editable) {
     customOptionArr.forEach((option) => {
       option.addEventListener("click", (e) => {
         e.target.classList.toggle("active");
