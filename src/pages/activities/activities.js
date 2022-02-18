@@ -81,6 +81,19 @@ const activityPicklist = {
 cehPicklist(activityPicklist);
 
 const search = document.getElementById("g__search");
-search.addEventListener("input", () => {
-  console.log("Change");
+const cardsArr = document.querySelectorAll(".g__card");
+search.addEventListener("input", (e) => {
+  let search = e.target.value.toUpperCase();
+  cardsArr.forEach((card) => {
+    const title = card.querySelector(".g__card-title").innerText;
+    const desc = card.querySelector(".g__card-description").innerText;
+    if (
+      title.toUpperCase().indexOf(search) > -1 ||
+      desc.toUpperCase().indexOf(search) > -1
+    ) {
+      card.style.display = "";
+    } else {
+      card.style.display = "none";
+    }
+  });
 });

@@ -1,5 +1,5 @@
-#main-calendar td.fc-daygrid-day.fc-day.fc-day-thu.fc-day-today {
-  background-color: #e9e6ff;
+#main-calendar td.fc-daygrid-day.fc-day.fc-day-today {
+  background-color: #e9e6ff !important;
 }
 button.fc-today-button.fc-button.fc-button-primary {
   background-color: #e9e6ff;
@@ -9,4 +9,11 @@ button.fc-today-button.fc-button.fc-button-primary {
 #main-calendar button.fc-next-button.fc-button.fc-button-primary {
   background-color: #e9e6ff;
   border: 0;
+}
+#main-calendar .fc-icon-chevron-left:before,
+#main-calendar .fc-icon-chevron-right:before {
+  color: #5d50e6;
+}
+#main-calendar button.fc-today-button.fc-button.fc-button-primary {
+  color: #5d50e6;
 }
